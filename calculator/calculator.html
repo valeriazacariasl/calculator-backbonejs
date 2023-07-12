@@ -73,9 +73,11 @@ app.CalculadoraView = Backbone.View.extend({
         this.inputOperacion = this.$('#operacion');
         this.numeros = this.$('.numeros');
 
-        this.numeros.on('click', '.numero', this.agregarNumero.bind(this));
-        this.$el.on('click', '#calcular', this.mostrarResultado.bind(this));
-        this.$el.on('click', '#borrar', this.borrarOperacion.bind(this));
+    },
+     events: {
+        'click .numero': 'agregarNumero',
+        'click #calcular': 'mostrarResultado',
+        'click #borrar': 'borrarOperacion'
     },
     agregarNumero: function (event) {
         const numero = $(event.target).text();
